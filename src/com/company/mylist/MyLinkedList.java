@@ -1,7 +1,6 @@
 package com.company.mylist;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class MyLinkedList<E> implements ILinkedList<E> {
@@ -23,26 +22,56 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     }
 
     Node<E> node(int index) {
-        return null;
+        if(size - index > index) {
+            Node<E> current = first;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current;
+        } else {
+            Node<E> current = last;
+            for (int i = size - 1; i > index; i--) {
+                current = current.prev;
+            }
+            return current;
+        }
     }
 
     public MyLinkedList(){}
 
     @Override
     public void add(E element) {
-        final Node<E> l = last;
-        final Node<E> newNode = new Node<>(l, element, null);
-        last = newNode;
-        if (l == null)
+        Node<E> lastElement = last;
+        Node<E> newNode = new Node<>(lastElement, element, null);
+        if(last == null) {
             first = newNode;
-        else
-            l.next = newNode;
+        } else {
+            lastElement.next = newNode;
+        }
+        last = newNode;
         size++;
+    }
+
+    private String IOOBMessage(int index) {
+        return String.format("index: %d, size: %d", index, size);
     }
 
     @Override
     public void add(int index, E element) {
-
+        if(!(index >= 0 && index<=size)) throw new IndexOutOfBoundsException(IOOBMessage(index));
+        if(size == index) {
+            add(element);
+        } else {
+            Node<E> indexNode = node(index);
+            Node<E> newNode = new Node<>(indexNode.prev, element, indexNode);
+            if(indexNode.prev != null) {
+                indexNode.prev.next = newNode;
+            } else {
+                first = newNode;
+            }
+            indexNode.prev = newNode;
+            size++;
+        }
     }
 
     @Override
@@ -52,8 +81,11 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        if(!(index >= 0 && index < size)) throw new IndexOutOfBoundsException(IOOBMessage(index));
+        return node(index).item;
     }
+
+
 
     @Override
     public int indexOf(E element) {
