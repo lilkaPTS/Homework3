@@ -11,6 +11,6 @@ public interface ILinkedList<E> extends java.lang.Iterable<E> {
     E remove(int index);
     E set(int index, E element);
     int size();
-    E[] toArray();
+    Object[] toArray();
     String toString();
 }

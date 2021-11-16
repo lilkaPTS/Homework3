@@ -1,6 +1,7 @@
 package com.company.mylist;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class MyLinkedList<E> implements ILinkedList<E> {
@@ -99,7 +100,11 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E set(int index, E element) {
-        return null;
+        if(!(index >= 0 && index < size)) throw new IndexOutOfBoundsException(IOOBMessage(index));
+        Node<E> indexNode = node(index);
+        E oldVal = indexNode.item;
+        indexNode.item = element;
+        return oldVal;
     }
 
     @Override
@@ -107,9 +112,15 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         return size;
     }
 
+
     @Override
-    public E[] toArray() {
-        return null;
+    public Object[] toArray() {
+        //E[] arr = new E[size]; Type parameter 'E' cannot be instantiated directly
+        Object[] result = new Object[size];
+        for (int i = 0; i < size; i++) {
+            result[i] = get(i);
+        }
+        return result;
     }
 
     @Override
