@@ -115,7 +115,13 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public Object[] toArray() {
-        //E[] arr = new E[size]; Type parameter 'E' cannot be instantiated directly
+        /*
+        E[] arr = (E[]) new Object[size]; // Type parameter 'E' cannot be instantiated directly
+        for (int i = 0; i < size; i++) {
+            arr[i] = get(i);
+        }
+        return arr;
+         */
         Object[] result = new Object[size];
         for (int i = 0; i < size; i++) {
             result[i] = get(i);
