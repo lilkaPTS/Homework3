@@ -13,6 +13,9 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             myLinkedList.add(String.valueOf(i));
         }
+        System.out.println("size do:"+myLinkedList.size());
+        System.out.println("remove element: "+myLinkedList.remove(0));
+        System.out.println("size posle:"+myLinkedList.size()  + "\n");
         Object[] arr = myLinkedList.toArray();
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);

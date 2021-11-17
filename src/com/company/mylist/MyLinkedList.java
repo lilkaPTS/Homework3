@@ -95,7 +95,24 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+        if(!(index >= 0 && index < size)) throw new IndexOutOfBoundsException(IOOBMessage(index));
+        Node<E> indexNode = node(index);
+        E returnElement = indexNode.item;
+        if(index == 0){
+            first = indexNode.next;
+            indexNode.next = null;
+        } else if(index == size-1) {
+            last = indexNode.prev;
+            indexNode.prev = null;
+        } else {
+            indexNode.prev.next = indexNode.next;
+            indexNode.next.prev = indexNode.prev;
+            indexNode.prev = null;
+            indexNode.next = null;
+        }
+        indexNode.item = null;
+        size--;
+        return returnElement;
     }
 
     @Override
