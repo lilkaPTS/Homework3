@@ -1,7 +1,6 @@
 package com.company.mylist;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class MyLinkedList<E> implements ILinkedList<E> {
@@ -9,6 +8,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     int size = 0;
     Node<E> first;
     Node<E> last;
+    int modCount = 0;
 
     private static class Node<E> {
         E item;
@@ -51,6 +51,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         last = newNode;
         size++;
+        modCount++;
     }
 
     private String IOOBMessage(int index) {
@@ -72,6 +73,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             }
             indexNode.prev = newNode;
             size++;
+            modCount++;
         }
     }
 
@@ -87,6 +89,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         first = last = null; // нужна для приведения к null первого и последнего элемента, тк сделав у этих элементов поля равные null, это не значит, что сам элемент стал null
         size=0;
+        modCount++;
     }
 
     @Override
@@ -137,6 +140,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         indexNode.item = null;
         size--;
+        modCount++;
         return returnElement;
     }
 
@@ -172,24 +176,20 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     private class Itr implements Iterator<E> {
 
+        int indexReturnElement = 0;
+
+        Itr(){}
+
         @Override
         public boolean hasNext() {
-            return false;
+            return indexReturnElement != size;
         }
 
         @Override
         public E next() {
-            return null;
-        }
-
-        @Override
-        public void remove() {
-            Iterator.super.remove();
-        }
-
-        @Override
-        public void forEachRemaining(Consumer<? super E> action) {
-            Iterator.super.forEachRemaining(action);
+            E returnValue = get(indexReturnElement);
+            indexReturnElement++;
+            return returnValue;
         }
     }
 }

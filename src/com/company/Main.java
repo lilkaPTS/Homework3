@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
         for (int i = 0; i < 10; i++) {
-            myLinkedList.add(String.valueOf(i));
+            myLinkedList.add(i);
         }
         System.out.println("size do:"+myLinkedList.size());
         System.out.println("remove element: "+myLinkedList.remove(0));
@@ -20,16 +20,16 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
-        System.out.println("indexOf 4:" + myLinkedList.indexOf("9"));
+        System.out.println("indexOf 4:" + myLinkedList.indexOf(9));
         myLinkedList.clear();
-        myLinkedList.add("4");
-        myLinkedList.add("443");
-        myLinkedList.add("4435");
-        myLinkedList.add("4345");
-        myLinkedList.add("42233");
+        myLinkedList.add(4);
+        myLinkedList.add(443);
+        myLinkedList.add(4435);
+        myLinkedList.add(4345);
+        myLinkedList.add(42233);
         System.out.println(myLinkedList.get(0));
 
-
+        myLinkedList.forEach(System.out::println);
         /*
         long lStartTime = System.nanoTime();
         ////////////
