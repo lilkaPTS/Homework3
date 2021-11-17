@@ -8,7 +8,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     int size = 0;
     Node<E> first;
     Node<E> last;
-    int modCount = 0;
 
     private static class Node<E> {
         E item;
@@ -51,7 +50,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         last = newNode;
         size++;
-        modCount++;
     }
 
     private String IOOBMessage(int index) {
@@ -73,7 +71,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             }
             indexNode.prev = newNode;
             size++;
-            modCount++;
         }
     }
 
@@ -89,7 +86,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         first = last = null; // нужна для приведения к null первого и последнего элемента, тк сделав у этих элементов поля равные null, это не значит, что сам элемент стал null
         size=0;
-        modCount++;
     }
 
     @Override
@@ -140,7 +136,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         indexNode.item = null;
         size--;
-        modCount++;
         return returnElement;
     }
 
