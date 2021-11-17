@@ -1,7 +1,6 @@
 package com.company.mylist;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class MyLinkedList<E> implements ILinkedList<E> {
 
@@ -165,23 +164,33 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     }
 
     @Override
+    public String toString() {
+        return "MyLinkedList{" +
+                "size=" + size +
+                ", first=" + first +
+                ", last=" + last +
+                '}';
+    }
+
+    @Override
     public Iterator<E> iterator() {
         return new Itr();
     }
 
     private class Itr implements Iterator<E> {
 
-        int indexReturnElement = 0;
+        private int indexReturnElement = 0;
 
         Itr(){}
 
         @Override
         public boolean hasNext() {
-            return indexReturnElement != size;
+            return indexReturnElement < size;
         }
 
         @Override
         public E next() {
+            if (!hasNext()) throw new NoSuchElementException();
             E returnValue = get(indexReturnElement);
             indexReturnElement++;
             return returnValue;
