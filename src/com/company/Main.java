@@ -13,23 +13,25 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             myLinkedList.add(i);
         }
-        System.out.println("size do:"+myLinkedList.size());
-        System.out.println("remove element: "+myLinkedList.remove(0));
-        System.out.println("size posle:"+myLinkedList.size()  + "\n");
+        myLinkedList.add(10, 10);
+        System.out.println("get(0) - " + myLinkedList.get(0) +
+                "\nget(5) - " + myLinkedList.get(5) +
+                "\nget(10) - " + myLinkedList.get(10));
+        System.out.println("indexOf(100) - " + myLinkedList.indexOf(100) +
+                "\nindexOf(3) - " + myLinkedList.indexOf(3));
+        System.out.println("set(10, 123) oldValue - " + myLinkedList.set(10,123));
+        System.out.println("size() - " + myLinkedList.size());
+        System.out.println("remove(10) remove value - " + myLinkedList.remove(10));
         Object[] arr = myLinkedList.toArray();
+        System.out.println("Print arr: ");
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.print(arr[i] + " ");
         }
-        System.out.println("indexOf 4:" + myLinkedList.indexOf(9));
+        System.out.println("\nPrint by forEach: ");
+        myLinkedList.forEach(e -> System.out.print(e + " "));
         myLinkedList.clear();
-        myLinkedList.add(4);
-        myLinkedList.add(443);
-        myLinkedList.add(4435);
-        myLinkedList.add(4345);
-        myLinkedList.add(42233);
-        System.out.println(myLinkedList.get(0));
+        System.out.println("\nclear() - toString() - " + myLinkedList);
 
-        myLinkedList.forEach(System.out::println);
         /*
         long lStartTime = System.nanoTime();
         ////////////
