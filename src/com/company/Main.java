@@ -20,6 +20,7 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
+        System.out.println("indexOf 4:" + myLinkedList.indexOf("9"));
 
 
         /*

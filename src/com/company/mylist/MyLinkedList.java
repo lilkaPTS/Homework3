@@ -90,7 +90,23 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public int indexOf(E element) {
-        return 0;
+        int index = 0;
+        if(element == null) {
+            for (int i = 0; i < size; i++) {
+                if(get(i)==null){
+                    return index;
+                }
+                index++;
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if(element.equals(get(i))){
+                    return index;
+                }
+                index++;
+            }
+        }
+        return -1;
     }
 
     @Override
