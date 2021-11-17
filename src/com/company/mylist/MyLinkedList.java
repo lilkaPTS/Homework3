@@ -1,6 +1,7 @@
 package com.company.mylist;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class MyLinkedList<E> implements ILinkedList<E> {
@@ -76,7 +77,16 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void clear() {
-
+        Node<E> element = first;
+        while (element.next != null) {
+            Node<E> elementNext = element.next;
+            element.prev = null;
+            element.item = null;
+            element.next = null;
+            element = elementNext;
+        }
+        first = last = null; // нужна для приведения к null первого и последнего элемента, тк сделав у этих элементов поля равные null, это не значит, что сам элемент стал null
+        size=0;
     }
 
     @Override

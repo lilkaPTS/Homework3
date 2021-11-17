@@ -21,6 +21,13 @@ public class Main {
             System.out.println(arr[i]);
         }
         System.out.println("indexOf 4:" + myLinkedList.indexOf("9"));
+        myLinkedList.clear();
+        myLinkedList.add("4");
+        myLinkedList.add("443");
+        myLinkedList.add("4435");
+        myLinkedList.add("4345");
+        myLinkedList.add("42233");
+        System.out.println(myLinkedList.get(0));
 
 
         /*
