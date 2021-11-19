@@ -1,4 +1,4 @@
-package com.company.mylist;
+package com.company.classes.mylist;
 
 import java.util.*;
 
@@ -40,6 +40,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void add(E element) {
+        /*
         Node<E> lastElement = last;
         Node<E> newNode = new Node<>(lastElement, element, null);
         if(last == null) {
@@ -48,6 +49,16 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             lastElement.next = newNode;
         }
         last = newNode;
+        size++;
+
+         */
+        final Node<E> l = last;
+        final Node<E> newNode = new Node<>(l, element, null);
+        last = newNode;
+        if (l == null)
+            first = newNode;
+        else
+            l.next = newNode;
         size++;
     }
 
@@ -161,6 +172,18 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             result[i] = get(i);
         }
         return result;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T[] toArray(T[] a) {
+        if (a.length < size) a = (T[])java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), size);
+        for (int i = 0; i < size; i++) {
+            a[i] = (T) get(i);
+        }
+        if (a.length > size)
+            a[size] = null;
+        return a;
     }
 
     @Override

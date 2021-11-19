@@ -1,4 +1,4 @@
-package com.company.mylist;
+package com.company.classes.mylist;
 
 import java.util.Iterator;
 
@@ -12,6 +12,7 @@ public interface ILinkedList<E> extends java.lang.Iterable<E> {
     E set(int index, E element);
     int size();
     Object[] toArray();
+    <T> T[] toArray(T[] a);
     String toString();
     Iterator<E> iterator();
 }
