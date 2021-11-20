@@ -23,14 +23,21 @@ public class TestPerformance {
         if(in.hasNextInt()) {
                 int index = in.nextInt()-1;
 
-                if(index==3 || index==4 || index==5) {
+                if(index==3 || index==6 || index==9) {
                     for (int i = 0; i < QUANTITY; i++) {
                         linkedList.add(new Circle());
+                    }
+                }
+                if(index==4 || index==7 || index==10) {
+                    for (int i = 0; i < QUANTITY; i++) {
                         myLinkedList.add(new Circle());
+                    }
+                }
+                if(index==5 || index==8 || index==11) {
+                    for (int i = 0; i < QUANTITY; i++) {
                         arrayList.add(new Circle());
                     }
-                } //167531300
-                  //2977603500
+                }
             switch (Test.values()[index]) {
                 case TEST1: {
                     LinkedList<Circle> ll = new LinkedList<>();
@@ -71,45 +78,69 @@ public class TestPerformance {
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Поиск элемента в LinkedList: " + leadTime);
-                    myLinkedList.get(3);
-                    long finish1 = System.nanoTime();
-                    leadTime = finish1 - finish;
-                    System.out.println("Поиск элемента в MyLinkedList: " + leadTime);
-                    arrayList.get(3);
-                    long finish2 = System.nanoTime();
-                    leadTime = finish2 - finish1;
-                    System.out.println("Поиск элемента в ArrayList: " + leadTime);
                     break;
                 }
                 case TEST5: {
+                    long start = System.nanoTime();
+                    myLinkedList.get(3);
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
+                    System.out.println("Поиск элемента в MyLinkedList: " + leadTime);
+                    break;
+                }
+                case TEST6: {
+                    long start = System.nanoTime();
+                    arrayList.get(3);
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
+                    System.out.println("Поиск элемента в ArrayList: " + leadTime);
+                    break;
+                }
+                case TEST7: {
                     long start = System.nanoTime();
                     linkedList.remove(3);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из LinkedList: " + leadTime);
+                    break;
+                }
+                case TEST8: {
+                    long start = System.nanoTime();
                     myLinkedList.remove(3);
-                    long finish1 = System.nanoTime();
-                    leadTime = finish1 - finish;
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
                     System.out.println("Удаление элемента из MyLinkedList: " + leadTime);
+                    break;
+                }
+                case TEST9: {
+                    long start = System.nanoTime();
                     arrayList.remove(3);
-                    long finish2 = System.nanoTime();
-                    leadTime = finish2 - finish1;
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
                     System.out.println("Удаление элемента из ArrayList: " + leadTime);
                     break;
                 }
-                case TEST6: {
+                case TEST10: {
                     long start = System.nanoTime();
                     linkedList.add(3, new Circle());
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Вставка элемента в LinkedList: " + leadTime);
+                    break;
+                }
+                case TEST11: {
+                    long start = System.nanoTime();
                     myLinkedList.add(3, new Circle());
-                    long finish1 = System.nanoTime();
-                    leadTime = finish1 - finish;
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
                     System.out.println("Вставка элемента в MyLinkedList: " + leadTime);
+                    break;
+                }
+                case TEST12: {
+                    long start = System.nanoTime();
                     arrayList.add(3, new Circle());
-                    long finish2 = System.nanoTime();
-                    leadTime = finish2 - finish1;
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
                     System.out.println("Вставка элемента в ArrayList: " + leadTime);
                     break;
                 }
