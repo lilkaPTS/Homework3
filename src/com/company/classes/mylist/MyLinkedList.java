@@ -40,7 +40,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void add(E element) {
-        /*
         Node<E> lastElement = last;
         Node<E> newNode = new Node<>(lastElement, element, null);
         if(last == null) {
@@ -49,16 +48,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             lastElement.next = newNode;
         }
         last = newNode;
-        size++;
-
-         */
-        final Node<E> l = last;
-        final Node<E> newNode = new Node<>(l, element, null);
-        last = newNode;
-        if (l == null)
-            first = newNode;
-        else
-            l.next = newNode;
         size++;
     }
 
@@ -69,19 +58,15 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public void add(int index, E element) {
         if(!(index >= 0 && index<=size)) throw new IndexOutOfBoundsException(IOOBMessage(index));
-        if(size == index) {
-            add(element);
+        Node<E> indexNode = node(index);
+        Node<E> newNode = new Node<>(indexNode.prev, element, indexNode);
+        if(indexNode.prev != null) {
+            indexNode.prev.next = newNode;
         } else {
-            Node<E> indexNode = node(index);
-            Node<E> newNode = new Node<>(indexNode.prev, element, indexNode);
-            if(indexNode.prev != null) {
-                indexNode.prev.next = newNode;
-            } else {
-                first = newNode;
-            }
-            indexNode.prev = newNode;
-            size++;
+            first = newNode;
         }
+        indexNode.prev = newNode;
+        size++;
     }
 
     @Override
