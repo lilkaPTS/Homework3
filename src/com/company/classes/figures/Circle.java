@@ -2,8 +2,8 @@ package com.company.classes.figures;
 
 import java.util.Objects;
 
-public class Circle {
-    private double radius = 1.0;
+public class Circle implements Comparable<Circle>{
+    private double radius;
     private String color = "red";
 
     public Circle() {
@@ -50,6 +50,15 @@ public class Circle {
     @Override
     public int hashCode() {
         return Objects.hash(radius, color);
+    }
+
+    @Override
+    public int compareTo(Circle o) {
+        if (this.radius == o.radius) {
+            return 0;
+        } else {
+            return this.radius > o.radius ? 1 : -1;
+        }
     }
 
     @Override
