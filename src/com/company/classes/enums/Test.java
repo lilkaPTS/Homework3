@@ -27,7 +27,10 @@ public enum Test {
     TEST24("Удаление элемента из TreeMap"),
     TEST25("Вставка элемента в LinkedList"),
     TEST26("Вставка элемента в MyLinkedList"),
-    TEST27("Вставка элемента в ArrayList");
+    TEST27("Вставка элемента в ArrayList"),
+    TEST28("Изменение элемента в LinkedList"),
+    TEST29("Изменение элемента в MyLinkedList"),
+    TEST30("Изменение элемента в ArrayList");
 
 
 
