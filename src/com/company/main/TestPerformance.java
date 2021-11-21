@@ -27,22 +27,22 @@ public class TestPerformance {
         Arrays.asList(Test.values()).forEach(ex -> System.out.println((ex.ordinal()+1) + ") " + ex.getDescription()));
         if(in.hasNextInt()) {
             int index = in.nextInt();
-            if(index == 10 || index == 16 || index == 25) {
+            if(index == 10 || index == 16 || index == 25 || index == 28) {
                 for (int i = 0; i < QUANTITY; i++) {
                     linkedList.add(new Circle());
                 }
             }
-            if(index == 11 || index == 17 || index == 26) {
+            if(index == 11 || index == 17 || index == 26 || index == 29) {
                 for (int i = 0; i < QUANTITY; i++) {
                     myLinkedList.add(new Circle());
                 }
             }
-            if(index == 12 || index == 18 || index == 27) {
+            if(index == 12 || index == 18 || index == 27 || index == 30) {
                 for (int i = 0; i < QUANTITY; i++) {
                     arrayList.add(new Circle());
                 }
             }
-            if(index == 13 || index == 22) {
+            if(index == 13 || index == 22 || index == 29) {
                 for (int i = 0; i < QUANTITY; i++) {
                     hashMap.put(i,new Circle());
                 }
@@ -128,22 +128,22 @@ public class TestPerformance {
                     HashMap<Integer,Circle> hm = new HashMap<>();
                     long start = System.nanoTime();
                     for (int i = 0; i < QUANTITY; i++) {
-                        hm.put(i,new Circle());
+                        hm.put(i,new Circle(i));
                     }
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
-                    System.out.println("Время добавления " + QUANTITY + " кругов в HashMap: " + leadTime);
+                    System.out.println("Время вставки " + QUANTITY + " кругов в HashMap: " + leadTime);
                     break;
                 }
                 case TEST8: {
                     LinkedHashMap<Integer,Circle> lhm = new LinkedHashMap<>();
                     long start = System.nanoTime();
                     for (int i = 0; i < QUANTITY; i++) {
-                        lhm.put(i,new Circle());
+                        lhm.put(i,new Circle(i));
                     }
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
-                    System.out.println("Время добавления " + QUANTITY + " кругов в LinkedHashMap: " + leadTime);
+                    System.out.println("Время вставки " + QUANTITY + " кругов в LinkedHashMap: " + leadTime);
                     break;
                 }
                 case TEST9: {
@@ -154,7 +154,7 @@ public class TestPerformance {
                     }
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
-                    System.out.println("Время добавления " + QUANTITY + " кругов в TreeMap: " + leadTime);
+                    System.out.println("Время вставки " + QUANTITY + " кругов в TreeMap: " + leadTime);
                     break;
                 }
                 case TEST10: {
@@ -183,6 +183,7 @@ public class TestPerformance {
                 }
                 case TEST13: {
                     long start = System.nanoTime();
+                    //for (int i = 0; i < QUANTITY/2; i++) //52349100
                     hashMap.get(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -191,6 +192,7 @@ public class TestPerformance {
                 }
                 case TEST14: {
                     long start = System.nanoTime();
+                    //for (int i = 0; i < QUANTITY/2; i++) //52043900
                     linkedHashMap.get(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -199,6 +201,7 @@ public class TestPerformance {
                 }
                 case TEST15: {
                     long start = System.nanoTime();
+                    //for (int i = 0; i < QUANTITY/2; i++) //283902000
                     treeMap.get(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -207,7 +210,7 @@ public class TestPerformance {
                 }
                 case TEST16: {
                     long start = System.nanoTime();
-                    linkedList.remove(QUANTITY/2);
+                    linkedList.remove(QUANTITY-2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из LinkedList: " + leadTime);
@@ -215,7 +218,7 @@ public class TestPerformance {
                 }
                 case TEST17: {
                     long start = System.nanoTime();
-                    myLinkedList.remove(QUANTITY/2);
+                    myLinkedList.remove(QUANTITY-2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из MyLinkedList: " + leadTime);
@@ -223,7 +226,7 @@ public class TestPerformance {
                 }
                 case TEST18: {
                     long start = System.nanoTime();
-                    arrayList.remove(QUANTITY/2);
+                    arrayList.remove(QUANTITY-2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из ArrayList: " + leadTime);
@@ -233,6 +236,7 @@ public class TestPerformance {
                     for (int i = 0; i < QUANTITY; i++) {
                         hashSet.add(new Circle(i));
                     }
+                    hashSet.add(new Circle(QUANTITY/2));
                     long start = System.nanoTime();
                     hashSet.remove(new Circle(QUANTITY/2));
                     long finish = System.nanoTime();
@@ -243,6 +247,9 @@ public class TestPerformance {
                 case TEST20: {
                     for (int i = 0; i < QUANTITY; i++) {
                         linkedHashSet.add(new Circle(i));
+                        if(i==QUANTITY/2) {
+                            linkedHashSet.add(new Circle(QUANTITY/2));
+                        }
                     }
                     long start = System.nanoTime();
                     linkedHashSet.remove(new Circle(QUANTITY/2));
@@ -255,6 +262,7 @@ public class TestPerformance {
                     for (int i = 0; i < QUANTITY; i++) {
                         treeSet.add(new Circle(i));
                     }
+                    treeSet.add(new Circle(QUANTITY/2));
                     long start = System.nanoTime();
                     treeSet.remove(new Circle(QUANTITY/2));
                     long finish = System.nanoTime();
@@ -264,6 +272,9 @@ public class TestPerformance {
                 }
                 case TEST22: {
                     long start = System.nanoTime();
+                    //hashMap.put(QUANTITY/2, new Circle());
+                    //hashMap.clear(); //6202200
+                    //for (int i = 0; i < QUANTITY/2; i++) //60094400
                     hashMap.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -272,6 +283,9 @@ public class TestPerformance {
                 }
                 case TEST23: {
                     long start = System.nanoTime();
+                    //linkedHashMap.put(QUANTITY/2, new Circle());
+                    //linkedHashMap.clear(); //6040600
+                    //for (int i = 0; i < QUANTITY/2; i++) //67675300
                     linkedHashMap.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -280,6 +294,9 @@ public class TestPerformance {
                 }
                 case TEST24: {
                     long start = System.nanoTime();
+                    //treeMap.put(QUANTITY/2, new Circle());
+                    //treeMap.clear(); //1900
+                    //for (int i = 0; i < QUANTITY/2; i++) //246540800
                     treeMap.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
@@ -288,7 +305,7 @@ public class TestPerformance {
                 }
                 case TEST25: {
                     long start = System.nanoTime();
-                    linkedList.add(3, new Circle());
+                    linkedList.add(QUANTITY, new Circle());
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Вставка элемента в LinkedList: " + leadTime);
@@ -296,7 +313,7 @@ public class TestPerformance {
                 }
                 case TEST26: {
                     long start = System.nanoTime();
-                    myLinkedList.add(3, new Circle());
+                    myLinkedList.add(QUANTITY, new Circle());
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Вставка элемента в MyLinkedList: " + leadTime);
@@ -304,10 +321,34 @@ public class TestPerformance {
                 }
                 case TEST27: {
                     long start = System.nanoTime();
-                    arrayList.add(3, new Circle());
+                    arrayList.add(QUANTITY, new Circle());
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Вставка элемента в ArrayList: " + leadTime);
+                    break;
+                }
+                case TEST28: {
+                    long start = System.nanoTime();
+                    Circle c = linkedList.set(2, new Circle(5));
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
+                    System.out.println("Изменение элемента в LinkedList: " + leadTime + " " + c);
+                    break;
+                }
+                case TEST29: {
+                    long start = System.nanoTime();
+                    myLinkedList.set(2, new Circle(5));
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
+                    System.out.println("Изменение элемента в MyLinkedList: " + leadTime);
+                    break;
+                }
+                case TEST30: {
+                    long start = System.nanoTime();
+                    arrayList.set(2, new Circle(5));
+                    long finish = System.nanoTime();
+                    long leadTime = finish - start;
+                    System.out.println("Изменение элемента в ArrayList: " + leadTime);
                     break;
                 }
 
