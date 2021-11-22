@@ -1,6 +1,6 @@
 package com.company.classes.enums;
 
-public enum Test {
+public enum TestList {
     TEST1("Добавление в LinkedList"),
     TEST2("Добавление в MyLinkedList"),
     TEST3("Добавление в ArrayList"),
@@ -35,7 +35,7 @@ public enum Test {
 
 
     private String description;
-    Test(String description) {
+    TestList(String description) {
         this.description = description;
     }
     public String getDescription() { return description; }
