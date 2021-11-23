@@ -13,23 +13,19 @@ public class TestPerformance {
 
     public static final int QUANTITY = 10000000;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Circle[] arrObj = new Circle[QUANTITY];
-        for (int i = 0; i < QUANTITY; i++) {
+        for (int i = 0; i < QUANTITY; i++)
             arrObj[i] = new Circle(i);
-        }
         LinkedList<Circle> linkedList = new LinkedList<>();
         MyLinkedList<Circle> myLinkedList = new MyLinkedList<>();
         ArrayList<Circle> arrayList = new ArrayList<>();
-        //Добавление и удаление
         HashSet<Circle> hashSet = new HashSet<>();
         LinkedHashSet<Circle> linkedHashSet = new LinkedHashSet<>();
         TreeSet<Circle> treeSet = new TreeSet<>();
-        //Добавление, поиск по ключу, удаление
         Integer[] arrKey = new Integer[QUANTITY];
-        for (int i = 0; i < arrKey.length; i++) {
+        for (int i = 0; i < arrKey.length; i++)
             arrKey[i] = i;
-        }
         HashMap<Integer, Circle> hashMap = new HashMap<>();
         LinkedHashMap<Integer, Circle> linkedHashMap = new LinkedHashMap<>();
         TreeMap<Integer, Circle> treeMap = new TreeMap<>();
@@ -136,6 +132,7 @@ public class TestPerformance {
                 case TEST20: {
                     CollectionAccess.fillingCollection(linkedHashSet,arrObj,QUANTITY,false);
                     CollectionAccess.testRemove(linkedHashSet, QUANTITY/2);
+                    break;
                 }
                 case TEST21: {
                     CollectionAccess.fillingCollection(treeSet,arrObj,QUANTITY,false);
@@ -180,5 +177,6 @@ public class TestPerformance {
                 }
             }
         }
+        in.close();
     }
 }
