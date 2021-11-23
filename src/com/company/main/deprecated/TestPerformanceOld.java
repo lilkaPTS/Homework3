@@ -211,7 +211,7 @@ public class TestPerformanceOld {
                 }
                 case TEST16: {
                     long start = System.nanoTime();
-                    linkedList.remove(QUANTITY-2);
+                    linkedList.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из LinkedList: " + leadTime);
@@ -219,7 +219,7 @@ public class TestPerformanceOld {
                 }
                 case TEST17: {
                     long start = System.nanoTime();
-                    myLinkedList.remove(QUANTITY-2);
+                    myLinkedList.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из MyLinkedList: " + leadTime);
@@ -227,7 +227,7 @@ public class TestPerformanceOld {
                 }
                 case TEST18: {
                     long start = System.nanoTime();
-                    arrayList.remove(QUANTITY-2);
+                    arrayList.remove(QUANTITY/2);
                     long finish = System.nanoTime();
                     long leadTime = finish - start;
                     System.out.println("Удаление элемента из ArrayList: " + leadTime);
