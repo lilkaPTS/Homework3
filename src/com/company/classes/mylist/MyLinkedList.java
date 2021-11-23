@@ -39,7 +39,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     public MyLinkedList(){}
 
     @Override
-    public void add(E element) {
+    public boolean add(E element) {
         Node<E> lastElement = last;
         Node<E> newNode = new Node<>(lastElement, element, null);
         if(last == null) {
@@ -49,6 +49,32 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         last = newNode;
         size++;
+        return false;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
     }
 
     private String IOOBMessage(int index) {
@@ -146,6 +172,16 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
     }
 
 
