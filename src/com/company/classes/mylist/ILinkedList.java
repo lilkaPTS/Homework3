@@ -4,9 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public interface ILinkedList<E> extends java.lang.Iterable<E>, Collection<E> {
-    default boolean add(E element) {
-        return false;
-    };
+    boolean add(E element); //возвращаемый тип был изменён, т.к. для оптимизации кода пришлось отнаследовать Collection
     void add(int index, E element);
     void clear();
     E get(int index);

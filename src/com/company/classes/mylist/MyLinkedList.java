@@ -38,7 +38,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     public MyLinkedList(){}
 
-    @Override
     public boolean add(E element) {
         Node<E> lastElement = last;
         Node<E> newNode = new Node<>(lastElement, element, null);
@@ -49,31 +48,36 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         }
         last = newNode;
         size++;
-        return false;
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
@@ -176,11 +180,13 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public boolean isEmpty() {
+        System.out.println("Реализации нет!");
         return false;
     }
 
     @Override
     public boolean contains(Object o) {
+        System.out.println("Реализации нет!");
         return false;
     }
 
